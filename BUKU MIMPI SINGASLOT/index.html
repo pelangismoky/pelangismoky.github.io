@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Buku Mimpi Cosmic & Rasi Bintang</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     RESET & BASE
+  ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold:       #f5c842;
+    --gold-light: #ffe580;
+    --gold-dim:   #a8832a;
+    --neon-blue:  #00b4ff;
+    --neon-cyan:  #00ffe7;
+    --neon-purple:#b44fff;
+    --neon-green: #00ff88;
+    --bg-deep:    #04040f;
+    --bg-navy:    #070b1e;
+    --glass-bg:   rgba(10, 18, 45, 0.65);
+    --border-glow:rgba(0, 180, 255, 0.35);
+    --text-main:  #e8eaf6;
+    --text-muted: #8892b0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: radial-gradient(ellipse at 20% 10%, #0d1b3e 0%, #070b1e 40%, #04040f 100%);
+    color: var(--text-main);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ============================================================
+     STAR CANVAS LAYER
+  ============================================================ */
+  #starCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ============================================================
+     PAGE WRAPPER
+  ============================================================ */
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px 60px;
+  }
+
+  /* ============================================================
+     HEADER SECTION
+  ============================================================ */
+  .site-header {
+    text-align: center;
+    padding: 48px 16px 32px;
+    position: relative;
+  }
+
+  /* --- LOGO --- */
+  /* ⬇⬇ GANTI "logo-buku-mimpi.png" dengan URL logo Anda ⬇⬇ */
+  .site-logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 220px;
+    width: 55%;
+    height: auto;
+    filter:
+      drop-shadow(0 0 12px rgba(245, 200, 66, 0.80))
+      drop-shadow(0 0 28px rgba(0, 180, 255, 0.55))
+      drop-shadow(0 0  6px rgba(255, 230, 100, 0.40));
+    animation: logoPulse 3.5s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+  }
+
+  @keyframes logoPulse {
+    0%, 100% {
+      filter:
+        drop-shadow(0 0 10px rgba(245, 200, 66, 0.75))
+        drop-shadow(0 0 24px rgba(0, 180, 255, 0.50));
+    }
+    50% {
+      filter:
+        drop-shadow(0 0 20px rgba(245, 200, 66, 1.00))
+        drop-shadow(0 0 42px rgba(0, 180, 255, 0.80))
+        drop-shadow(0 0 60px rgba(180, 79, 255, 0.45));
+    }
+  }
+
+  /* Decorative crescent moon image above title */
+  .deco-moon {
+    display: block;
+    margin: 0 auto 10px;
+    width: 64px;
+    height: auto;
+    opacity: 0.88;
+    filter: drop-shadow(0 0 14px rgba(245, 200, 66, 0.9));
+    animation: moonFloat 6s ease-in-out infinite;
+  }
+
+  @keyframes moonFloat {
+    0%, 100% { transform: translateY(0px) rotate(-5deg); }
+    50%       { transform: translateY(-10px) rotate(5deg); }
+  }
+
+  /* Main site title */
+  .site-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1.6rem, 5vw, 3.2rem);
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    line-height: 1.15;
+    background: linear-gradient(135deg, #ffe580 0%, #f5c842 35%, #ffffff 55%, #f5c842 75%, #a8832a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter:
+      drop-shadow(0 0 8px rgba(245, 200, 66, 0.85))
+      drop-shadow(0 2px 18px rgba(245, 200, 66, 0.55));
+    animation: titleGlow 4s ease-in-out infinite;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* Constellation icon next to the title */
+  .title-constellation-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 8px rgba(0, 180, 255, 0.9));
+    animation: spinSlow 20s linear infinite;
+  }
+
+  @keyframes spinSlow { to { transform: rotate(360deg); } }
+
+  @keyframes titleGlow {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(245, 200, 66, 0.85)) drop-shadow(0 2px 18px rgba(245, 200, 66, 0.55)); }
+    50%       { filter: drop-shadow(0 0 16px rgba(245, 200, 66, 1)) drop-shadow(0 2px 36px rgba(255, 220, 80, 0.75)) drop-shadow(0 0 60px rgba(0, 180, 255, 0.35)); }
+  }
+
+  .site-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    letter-spacing: 0.22em;
+    color: var(--neon-blue);
+    text-transform: uppercase;
+    opacity: 0.78;
+    margin-top: 6px;
+    text-shadow: 0 0 10px rgba(0, 180, 255, 0.6);
+  }
+
+  /* Thin divider line */
+  .divider {
+    width: 320px;
+    max-width: 90%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--neon-blue), var(--gold), transparent);
+    margin: 20px auto;
+    opacity: 0.6;
+  }
+
+  /* ============================================================
+     SEARCH BOX
+  ============================================================ */
+  .search-section {
+    margin: 0 auto 32px;
+    max-width: 680px;
+    position: relative;
+  }
+
+  .search-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+    opacity: 0.85;
+  }
+
+  .search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 18px;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    color: var(--neon-blue);
+    opacity: 0.75;
+  }
+
+  #searchInput {
+    width: 100%;
+    padding: 16px 52px 16px 52px;
+    background: rgba(7, 14, 38, 0.80);
+    border: 1.5px solid rgba(0, 180, 255, 0.30);
+    border-radius: 50px;
+    color: var(--text-main);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+    backdrop-filter: blur(10px);
+  }
+
+  #searchInput::placeholder { color: var(--text-muted); opacity: 0.7; }
+
+  #searchInput:focus {
+    border-color: var(--neon-blue);
+    background: rgba(0, 20, 60, 0.90);
+    box-shadow:
+      0 0 0 3px rgba(0, 180, 255, 0.15),
+      0 0 24px rgba(0, 180, 255, 0.35),
+      inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  .search-clear {
+    position: absolute;
+    right: 18px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: color 0.2s;
+    display: none;
+  }
+  .search-clear:hover { color: var(--neon-blue); }
+  .search-clear.visible { display: block; }
+
+  .result-count {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    min-height: 18px;
+  }
+  .result-count span { color: var(--neon-cyan); font-weight: 700; }
+
+  /* ============================================================
+     TABLE CONTAINER (GLASSMORPHISM)
+  ============================================================ */
+  .table-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid var(--border-glow);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.60),
+      0 1px 0 rgba(255,255,255,0.04) inset,
+      0 0 60px rgba(0, 60, 150, 0.18);
+  }
+
+  .table-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px;
+    border-bottom: 1px solid rgba(0, 180, 255, 0.15);
+    background: rgba(0, 20, 60, 0.40);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .table-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .table-badge {
+    font-size: 0.72rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 180, 255, 0.40);
+    color: var(--neon-blue);
+    background: rgba(0, 50, 120, 0.35);
+    letter-spacing: 0.08em;
+  }
+
+  /* ============================================================
+     DATA TABLE
+  ============================================================ */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .data-table thead tr {
+    background: rgba(0, 30, 80, 0.60);
+  }
+
+  .data-table thead th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--neon-blue);
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 180, 255, 0.20);
+    white-space: nowrap;
+  }
+
+  .data-table thead th.center { text-align: center; }
+
+  .data-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: background 0.22s;
+  }
+
+  .data-table tbody tr:hover {
+    background: rgba(0, 100, 220, 0.12);
+  }
+
+  .data-table tbody tr.hidden-row { display: none; }
+
+  .data-table td {
+    padding: 13px 16px;
+    vertical-align: middle;
+  }
+
+  /* Category icon + name cell */
+  .cat-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cat-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid rgba(245, 200, 66, 0.25);
+    background: rgba(20, 20, 60, 0.8);
+    filter: drop-shadow(0 0 4px rgba(245, 200, 66, 0.30));
+  }
+
+  /* Category badge color dots */
+  .cat-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+
+  .dream-name {
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--text-main);
+  }
+
+  .dream-category {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  /* Number badges */
+  .badge-wrap { text-align: center; }
+
+  .nbadge {
+    display: inline-block;
+    min-width: 42px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.0rem;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    position: relative;
+  }
+
+  .nbadge.b2d {
+    color: #00ffe7;
+    background: rgba(0, 255, 231, 0.10);
+    border: 1px solid rgba(0, 255, 231, 0.40);
+    box-shadow: 0 0 8px rgba(0, 255, 231, 0.35), inset 0 0 6px rgba(0, 255, 231, 0.05);
+    text-shadow: 0 0 8px rgba(0, 255, 231, 0.80);
+  }
+
+  .nbadge.b3d {
+    color: #f5c842;
+    background: rgba(245, 200, 66, 0.10);
+    border: 1px solid rgba(245, 200, 66, 0.40);
+    box-shadow: 0 0 8px rgba(245, 200, 66, 0.35), inset 0 0 6px rgba(245, 200, 66, 0.05);
+    text-shadow: 0 0 8px rgba(245, 200, 66, 0.80);
+  }
+
+  .nbadge.b4d {
+    color: #b44fff;
+    background: rgba(180, 79, 255, 0.10);
+    border: 1px solid rgba(180, 79, 255, 0.40);
+    box-shadow: 0 0 8px rgba(180, 79, 255, 0.35), inset 0 0 6px rgba(180, 79, 255, 0.05);
+    text-shadow: 0 0 8px rgba(180, 79, 255, 0.80);
+  }
+
+  /* Kategori label chip */
+  .cat-chip {
+    display: inline-block;
+    font-size: 0.68rem;
+    padding: 2px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .chip-nature   { background: rgba(0,255,136,0.12); color: #00ff88; border: 1px solid rgba(0,255,136,0.30); }
+  .chip-animal   { background: rgba(245,200,66,0.12); color: #f5c842; border: 1px solid rgba(245,200,66,0.30); }
+  .chip-people   { background: rgba(0,180,255,0.12); color: #00b4ff; border: 1px solid rgba(0,180,255,0.30); }
+  .chip-place    { background: rgba(180,79,255,0.12); color: #b44fff; border: 1px solid rgba(180,79,255,0.30); }
+  .chip-object   { background: rgba(255,100,100,0.12); color: #ff7070; border: 1px solid rgba(255,100,100,0.30); }
+  .chip-activity { background: rgba(100,220,255,0.12); color: #64dcff; border: 1px solid rgba(100,220,255,0.30); }
+  .chip-body     { background: rgba(255,160,50,0.12); color: #ffa032; border: 1px solid rgba(255,160,50,0.30); }
+  .chip-mystic   { background: rgba(255,80,200,0.12); color: #ff50c8; border: 1px solid rgba(255,80,200,0.30); }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 52px 20px;
+    color: var(--text-muted);
+    display: none;
+  }
+  .empty-state.visible { display: block; }
+  .empty-state .empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.45; }
+  .empty-state p { font-size: 0.9rem; letter-spacing: 0.08em; }
+
+  /* ============================================================
+     SCROLL TABLE WRAPPER (mobile)
+  ============================================================ */
+  .table-scroll { overflow-x: auto; }
+
+  /* ============================================================
+     FOOTER
+  ============================================================ */
+  .site-footer {
+    text-align: center;
+    margin-top: 48px;
+    padding: 20px 16px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    border-top: 1px solid rgba(0, 180, 255, 0.10);
+    opacity: 0.65;
+  }
+
+  /* ============================================================
+     RESPONSIVE
+  ============================================================ */
+  @media (max-width: 640px) {
+    .site-logo { max-width: 160px; }
+    .data-table td, .data-table th { padding: 10px 10px; }
+    .nbadge { min-width: 34px; font-size: 0.88rem; }
+    .dream-name { font-size: 0.88rem; }
+  }
+
+  /* ============================================================
+     HIGHLIGHT ON SEARCH MATCH
+  ============================================================ */
+  mark.hl {
+    background: rgba(245, 200, 66, 0.25);
+    color: var(--gold-light);
+    border-radius: 3px;
+    padding: 0 1px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     STAR / CONSTELLATION CANVAS BACKGROUND
+============================================================ -->
+<canvas id="starCanvas"></canvas>
+
+<!-- ============================================================
+     PAGE WRAPPER
+============================================================ -->
+<div class="page-wrapper">
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="site-header">
+
+    <!-- CRESCENT MOON DECORATION (top ornament) -->
+    <!-- Unsplash crescent moon gold illustration -->
+    <img
+      class="deco-moon"
+      src="https://images.unsplash.com/photo-1532693322450-2cb5c511067d?w=120&h=120&fit=crop&q=80"
+      alt="Bulan Sabit Dekorasi"
+      onerror="this.style.display='none'"
+    />
+
+    <!-- ===================================================
+         MAIN LOGO
+         Ganti "logo-buku-mimpi.png" dengan URL logo Anda
+    =================================================== -->
+    <img
+      class="site-logo"
+      src="logo-buku-mimpi.png"
+      alt="Logo Buku Mimpi"
+      onerror="this.style.display='none'"
+    />
+    <!-- ===================================================
+         END LOGO — untuk mengganti logo, ubah src di atas
+    =================================================== -->
+
+    <!-- SITE TITLE with constellation icon -->
+    <h1 class="site-title">
+      <!-- Constellation SVG icon kiri -->
+      <svg class="title-constellation-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="15" cy="20" r="3" fill="#00b4ff" opacity="0.9"/>
+        <circle cx="50" cy="10" r="4" fill="#f5c842" opacity="0.95"/>
+        <circle cx="85" cy="25" r="3" fill="#00b4ff" opacity="0.9"/>
+        <circle cx="70" cy="55" r="3.5" fill="#b44fff" opacity="0.9"/>
+        <circle cx="30" cy="60" r="3" fill="#00ffe7" opacity="0.9"/>
+        <circle cx="50" cy="85" r="4" fill="#f5c842" opacity="0.95"/>
+        <circle cx="10" cy="75" r="2.5" fill="#00b4ff" opacity="0.8"/>
+        <circle cx="90" cy="75" r="2.5" fill="#00b4ff" opacity="0.8"/>
+        <line x1="15" y1="20" x2="50" y2="10" stroke="#00b4ff" stroke-width="0.8" opacity="0.5"/>
+        <line x1="50" y1="10" x2="85" y2="25" stroke="#00b4ff" stroke-width="0.8" opacity="0.5"/>
+        <line x1="85" y1="25" x2="70" y2="55" stroke="#b44fff" stroke-width="0.8" opacity="0.5"/>
+        <line x1="70" y1="55" x2="50" y2="85" stroke="#b44fff" stroke-width="0.8" opacity="0.5"/>
+        <line x1="50" y1="85" x2="30" y2="60" stroke="#00ffe7" stroke-width="0.8" opacity="0.5"/>
+        <line x1="30" y1="60" x2="15" y2="20" stroke="#00ffe7" stroke-width="0.8" opacity="0.5"/>
+        <line x1="50" y1="10" x2="30" y2="60" stroke="#f5c842" stroke-width="0.6" opacity="0.35"/>
+        <line x1="50" y1="85" x2="10" y2="75" stroke="#f5c842" stroke-width="0.6" opacity="0.35"/>
+        <line x1="50" y1="85" x2="90" y2="75" stroke="#f5c842" stroke-width="0.6" opacity="0.35"/>
+      </svg>
+
+      BUKU MIMPI COSMIC
+
+      <!-- Constellation SVG icon kanan -->
+      <svg class="title-constellation-icon" style="animation-direction:reverse" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="8"  r="4"   fill="#f5c842" opacity="0.95"/>
+        <circle cx="80" cy="35" r="3"   fill="#00ffe7" opacity="0.9"/>
+        <circle cx="65" cy="70" r="3.5" fill="#b44fff" opacity="0.9"/>
+        <circle cx="20" cy="70" r="3"   fill="#00b4ff" opacity="0.9"/>
+        <circle cx="10" cy="40" r="3"   fill="#00b4ff" opacity="0.9"/>
+        <circle cx="50" cy="50" r="2.5" fill="#ffffff" opacity="0.7"/>
+        <line x1="50" y1="8"  x2="80" y2="35" stroke="#00ffe7" stroke-width="0.8" opacity="0.5"/>
+        <line x1="80" y1="35" x2="65" y2="70" stroke="#b44fff" stroke-width="0.8" opacity="0.5"/>
+        <line x1="65" y1="70" x2="20" y2="70" stroke="#f5c842" stroke-width="0.8" opacity="0.5"/>
+        <line x1="20" y1="70" x2="10" y2="40" stroke="#00b4ff" stroke-width="0.8" opacity="0.5"/>
+        <line x1="10" y1="40" x2="50" y2="8"  stroke="#00b4ff" stroke-width="0.8" opacity="0.5"/>
+        <line x1="50" y1="8"  x2="50" y2="50" stroke="#f5c842" stroke-width="0.6" opacity="0.35"/>
+        <line x1="80" y1="35" x2="50" y2="50" stroke="#f5c842" stroke-width="0.6" opacity="0.35"/>
+        <line x1="65" y1="70" x2="50" y2="50" stroke="#f5c842" stroke-width="0.6" opacity="0.35"/>
+      </svg>
+    </h1>
+
+    <p class="site-subtitle">✦ Tafsir Angka Mimpi &amp; Rasi Bintang ✦</p>
+    <div class="divider"></div>
+  </header>
+
+  <!-- ============================================================
+       SEARCH BOX
+  ============================================================ -->
+  <section class="search-section" aria-label="Cari mimpi">
+    <label class="search-label" for="searchInput">✦ Cari Kata Mimpi ✦</label>
+    <div class="search-wrapper">
+      <!-- Search icon -->
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Ketik kata mimpi... misalnya: air, ular, terbang"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="search-clear" id="clearBtn" title="Hapus pencarian">✕</button>
+    </div>
+    <div class="result-count" id="resultCount"></div>
+  </section>
+
+  <!-- ============================================================
+       DATA TABLE
+  ============================================================ -->
+  <div class="table-container">
+    <div class="table-header-bar">
+      <span class="table-title">✦ Daftar Tafsir Angka Mimpi</span>
+      <span class="table-badge" id="totalBadge">150 Data</span>
+    </div>
+
+    <div class="table-scroll">
+      <table class="data-table" id="dreamTable" aria-label="Tabel Buku Mimpi">
+        <thead>
+          <tr>
+            <th style="min-width:200px">Mimpi / Kata Kunci</th>
+            <th>Kategori</th>
+            <th class="center" style="min-width:64px">2D</th>
+            <th class="center" style="min-width:72px">3D</th>
+            <th class="center" style="min-width:80px">4D</th>
+          </tr>
+        </thead>
+        <tbody id="dreamBody">
+          <!-- Rows injected by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">🔭</div>
+      <p>Tidak ada mimpi yang ditemukan.<br/>Coba kata kunci lain.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer">
+    ✦ Buku Mimpi Cosmic &amp; Rasi Bintang ✦ &nbsp;|&nbsp; SEO by Rivo Christian
+  </footer>
+</div><!-- /page-wrapper -->
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+/* ============================================================
+   DREAM DATA — 150 entries
+============================================================ */
+const DREAMS = [
+  /* --- ALAM (Nature) --- */
+  ["Air Bah / Banjir","nature","🌊","09","209","3209"],
+  ["Air Bersih Mengalir","nature","💧","22","122","4122"],
+  ["Air Keruh","nature","🌀","04","304","6304"],
+  ["Awan Hitam","nature","⛈","17","517","8517"],
+  ["Awan Putih","nature","☁","08","308","1308"],
+  ["Bintang Jatuh","nature","🌠","13","613","9613"],
+  ["Bulan Purnama","nature","🌕","18","118","5118"],
+  ["Bulan Sabit","nature","🌙","25","725","7725"],
+  ["Bumi Gemetar / Gempa","nature","🌍","31","431","2431"],
+  ["Gunung Berapi","nature","🌋","39","739","4739"],
+  ["Gunung Tinggi","nature","⛰","27","627","3627"],
+  ["Hujan Deras","nature","🌧","10","510","6510"],
+  ["Hujan Emas","nature","✨","21","221","1221"],
+  ["Kebakaran Besar","nature","🔥","76","476","8476"],
+  ["Kilat / Petir","nature","⚡","16","116","3116"],
+  ["Laut Bergelombang","nature","🌊","33","733","5733"],
+  ["Laut Tenang","nature","🏖","14","614","2614"],
+  ["Matahari Terbit","nature","🌅","41","941","7941"],
+  ["Matahari Terbenam","nature","🌇","57","257","4257"],
+  ["Pelangi","nature","🌈","07","207","9207"],
+  ["Pohon Besar","nature","🌳","55","355","6355"],
+  ["Pohon Tumbang","nature","🪵","43","643","8643"],
+  ["Salju","nature","❄","62","162","1162"],
+  ["Tanah Longsor","nature","⛰","88","288","3288"],
+  ["Tornado / Puting Beliung","nature","🌪","66","966","5966"],
+
+  /* --- HEWAN (Animal) --- */
+  ["Anjing Menggigit","animal","🐕","26","826","4826"],
+  ["Ayam Bertelur","animal","🐔","45","745","2745"],
+  ["Ayam Hitam","animal","🐓","02","402","9402"],
+  ["Babi","animal","🐷","03","603","7603"],
+  ["Buaya","animal","🐊","36","236","5236"],
+  ["Burung Hantu","animal","🦉","53","153","8153"],
+  ["Burung Merak","animal","🦚","47","947","6947"],
+  ["Cicak Jatuh","animal","🦎","29","529","3529"],
+  ["Gajah","animal","🐘","69","369","1369"],
+  ["Harimau Mengaum","animal","🐯","51","851","9851"],
+  ["Ikan Besar","animal","🐠","32","232","7232"],
+  ["Ikan Mas","animal","🐟","68","168","4168"],
+  ["Kelelawar","animal","🦇","44","644","2644"],
+  ["Kuda Hitam","animal","🐴","11","911","8911"],
+  ["Kuda Putih","animal","🐎","06","306","5306"],
+  ["Kumbang Emas","animal","🪲","19","319","3319"],
+  ["Kucing Hitam","animal","🐈","58","758","1758"],
+  ["Kucing Putih","animal","🐈","37","137","6137"],
+  ["Laba-laba","animal","🕷","72","172","9172"],
+  ["Lebah / Tawon","animal","🐝","42","542","4542"],
+  ["Monyet","animal","🐒","05","905","7905"],
+  ["Naga / Nogo","animal","🐉","71","271","2271"],
+  ["Singa","animal","🦁","20","120","5120"],
+  ["Tikus","animal","🐁","78","478","3478"],
+  ["Ular Besar","animal","🐍","59","559","8559"],
+  ["Ular Kecil","animal","🐍","28","228","6228"],
+  ["Ulat Besar","animal","🐛","35","235","1235"],
+
+  /* --- MANUSIA / ORANG (People) --- */
+  ["Anak Kecil Menangis","people","👶","30","730","4730"],
+  ["Bayi","people","🍼","01","301","7301"],
+  ["Bertemu Orang Tua","people","👴","64","164","2164"],
+  ["Bertemu Presiden","people","🤝","49","849","5849"],
+  ["Bos / Majikan","people","💼","54","454","9454"],
+  ["Diri Sendiri Menikah","people","💍","24","124","3124"],
+  ["Guru / Ustadz","people","📚","40","940","6940"],
+  ["Hamil","people","🤰","15","715","1715"],
+  ["Ibu Kandung","people","👩","63","263","8263"],
+  ["Kekasih / Pacar","people","❤","50","150","4150"],
+  ["Mati / Meninggal","people","🕯","77","277","2277"],
+  ["Orang Gila","people","🤪","23","623","7623"],
+  ["Orang Kaya","people","💰","73","173","5173"],
+  ["Perempuan Cantik","people","👸","12","912","9912"],
+  ["Polisi","people","👮","56","356","3356"],
+  ["Teman Lama","people","🤝","34","534","1534"],
+
+  /* --- TEMPAT (Place) --- */
+  ["Di Atas Awan","place","☁","48","248","6248"],
+  ["Di Dalam Sumur","place","🪣","79","679","4679"],
+  ["Di Dalam Tanah","place","⛏","65","265","8265"],
+  ["Di Luar Negeri","place","✈","60","160","2160"],
+  ["Di Pasar","place","🏪","38","438","5438"],
+  ["Di Pemakaman","place","🪦","80","480","9480"],
+  ["Di Rumah Sakit","place","🏥","67","967","3967"],
+  ["Di Sekolah","place","🏫","46","246","7246"],
+  ["Di Tempat Ibadah","place","🕌","86","186","1186"],
+  ["Hutan Lebat","place","🌴","52","352","6352"],
+  ["Istana / Keraton","place","🏰","85","285","4285"],
+  ["Jembatan","place","🌉","74","174","8174"],
+  ["Pasar Malam","place","🎡","93","993","2993"],
+  ["Pelabuhan","place","⚓","61","261","5261"],
+  ["Rumah Baru","place","🏠","70","770","3770"],
+
+  /* --- BENDA (Object) --- */
+  ["Batu Permata","object","💎","90","390","7390"],
+  ["Buku","object","📖","82","282","1282"],
+  ["Cincin Emas","object","💍","83","983","6983"],
+  ["Dompet Penuh Uang","object","👜","84","484","4484"],
+  ["Emas Batangan","object","🥇","87","187","9187"],
+  ["Gunting","object","✂","96","296","2296"],
+  ["Jam Berhenti","object","⏰","91","591","5591"],
+  ["Jaring / Perangkap","object","🕸","94","494","8494"],
+  ["Kapak / Golok","object","🪓","89","989","3989"],
+  ["Kendaraan Mogok","object","🚗","98","198","1198"],
+  ["Kunci Emas","object","🗝","95","695","6695"],
+  ["Lampu Padam","object","💡","75","275","9275"],
+  ["Mobil Baru","object","🚘","97","197","4197"],
+  ["Payung","object","☂","81","381","7381"],
+  ["Uang Banyak","object","💵","92","292","2292"],
+
+  /* --- AKTIVITAS (Activity) --- */
+  ["Berlari Kencang","activity","🏃","16","516","3516"],
+  ["Bermain Kartu","activity","🃏","29","729","8729"],
+  ["Bersepeda","activity","🚴","37","337","5337"],
+  ["Bertengkar","activity","😡","26","126","2126"],
+  ["Bola Jatuh","activity","⚽","48","348","6348"],
+  ["Jatuh ke Jurang","activity","⬇","07","907","1907"],
+  ["Jatuh dari Ketinggian","activity","💨","13","613","9613"],
+  ["Memasak","activity","🍳","22","422","4422"],
+  ["Memancing","activity","🎣","38","138","7138"],
+  ["Mencuri","activity","🦹","54","254","3254"],
+  ["Menyanyi","activity","🎤","60","160","1160"],
+  ["Pacuan Kuda","activity","🏇","45","845","5845"],
+  ["Terbang di Udara","activity","🕊","05","705","8705"],
+  ["Tertawa Terbahak","activity","😂","10","310","6310"],
+  ["Tertembak","activity","🔫","67","267","2267"],
+
+  /* --- TUBUH (Body) --- */
+  ["Gigi Rontok","body","🦷","61","361","7361"],
+  ["Kaki Patah","body","🦵","73","973","4973"],
+  ["Kepala Botak","body","🧑","57","557","9557"],
+  ["Mata Buta","body","👁","42","642","3642"],
+  ["Rambut Panjang","body","💇","34","134","1134"],
+  ["Sakit Perut","body","🤢","19","519","6519"],
+  ["Tangan Dipotong","body","✋","28","928","8928"],
+  ["Telinga Besar","body","👂","15","215","5215"],
+
+  /* --- MISTIS (Mystic) --- */
+  ["Arwah / Hantu","mystic","👻","02","702","2702"],
+  ["Bertemu Dewa","mystic","🌟","39","239","4239"],
+  ["Bertemu Jin","mystic","🧞","76","176","9176"],
+  ["Bertemu Malaikat","mystic","😇","53","953","5953"],
+  ["Buku Gaib Terbuka","mystic","📜","64","164","7164"],
+  ["Ilmu Hitam / Santet","mystic","🔮","85","285","3285"],
+  ["Keris Pusaka","mystic","⚔","71","171","6171"],
+  ["Mahkota Cahaya","mystic","👑","08","508","1508"],
+  ["Makhluk Gaib","mystic","🌑","47","747","8747"],
+  ["Mantra / Doa Terkabul","mystic","✨","30","930","4930"],
+  ["Meteor Jatuh","mystic","☄","66","366","2366"],
+  ["Portal / Gerbang Gaib","mystic","🌀","41","141","5141"],
+  ["Ramalan Bintang","mystic","♈","58","258","9258"],
+  ["Rasi Orion","mystic","✨","25","525","3525"],
+  ["Roh Leluhur","mystic","🕯","79","179","1179"],
+  ["Sihir / Tongkat Ajaib","mystic","🪄","14","914","6914"],
+  ["Simbol Zodiak","mystic","⭐","20","320","7320"],
+  ["Wahyu / Ilham","mystic","🌠","33","633","4633"],
+];
+
+/* ============================================================
+   CATEGORY CONFIG
+============================================================ */
+const CAT = {
+  nature:   { label:"Alam",     cls:"chip-nature"   },
+  animal:   { label:"Hewan",    cls:"chip-animal"   },
+  people:   { label:"Orang",    cls:"chip-people"   },
+  place:    { label:"Tempat",   cls:"chip-place"    },
+  object:   { label:"Benda",    cls:"chip-object"   },
+  activity: { label:"Aktivitas",cls:"chip-activity" },
+  body:     { label:"Tubuh",    cls:"chip-body"     },
+  mystic:   { label:"Mistis",   cls:"chip-mystic"   },
+};
+
+/* Unsplash image seeds per category for the cat icon */
+const CAT_IMG = {
+  nature:   "https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=64&h=64&fit=crop&q=70",
+  animal:   "https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=64&h=64&fit=crop&q=70",
+  people:   "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=64&h=64&fit=crop&q=70",
+  place:    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=64&h=64&fit=crop&q=70",
+  object:   "https://images.unsplash.com/photo-1518770660439-4636190af475?w=64&h=64&fit=crop&q=70",
+  activity: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=64&h=64&fit=crop&q=70",
+  body:     "https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=64&h=64&fit=crop&q=70",
+  mystic:   "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=64&h=64&fit=crop&q=70",
+};
+
+/* ============================================================
+   RENDER TABLE
+============================================================ */
+function escape(str) {
+  return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+function highlight(text, q) {
+  if (!q) return escape(text);
+  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+  return escape(text).replace(re, '<mark class="hl">$1</mark>');
+}
+
+function buildRow(d, q) {
+  const [name, cat, icon, d2, d3, d4] = d;
+  const c = CAT[cat] || { label:cat, cls:"chip-object" };
+  const imgSrc = CAT_IMG[cat] || '';
+  return `
+    <tr>
+      <td>
+        <div class="cat-cell">
+          <img class="cat-icon" src="${imgSrc}" alt="${c.label}" loading="lazy"
+               onerror="this.style.opacity='0';this.nextElementSibling.style.display='flex'"/>
+          <span class="cat-dot" style="display:none">${icon}</span>
+          <div>
+            <div class="dream-name">${highlight(name, q)}</div>
+          </div>
+        </div>
+      </td>
+      <td><span class="cat-chip ${c.cls}">${c.label}</span></td>
+      <td class="badge-wrap"><span class="nbadge b2d">${d2}</span></td>
+      <td class="badge-wrap"><span class="nbadge b3d">${d3}</span></td>
+      <td class="badge-wrap"><span class="nbadge b4d">${d4}</span></td>
+    </tr>`;
+}
+
+function renderTable(q) {
+  const term = (q || "").trim().toLowerCase();
+  const body = document.getElementById("dreamBody");
+  const emptyState = document.getElementById("emptyState");
+  const resultCount = document.getElementById("resultCount");
+
+  let html = "";
+  let count = 0;
+
+  for (const d of DREAMS) {
+    const name = d[0].toLowerCase();
+    const cat  = (CAT[d[1]] || {}).label || d[1];
+    if (!term || name.includes(term) || cat.toLowerCase().includes(term)) {
+      html += buildRow(d, term);
+      count++;
+    }
+  }
+
+  body.innerHTML = html;
+
+  if (count === 0) {
+    emptyState.classList.add("visible");
+    resultCount.innerHTML = `<span>0</span> hasil ditemukan`;
+  } else {
+    emptyState.classList.remove("visible");
+    if (term) {
+      resultCount.innerHTML = `Menampilkan <span>${count}</span> hasil untuk "<span>${escape(term)}</span>"`;
+    } else {
+      resultCount.innerHTML = ``;
+    }
+  }
+}
+
+/* ============================================================
+   SEARCH EVENTS
+============================================================ */
+const input = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearBtn");
+
+input.addEventListener("input", () => {
+  const val = input.value;
+  clearBtn.classList.toggle("visible", val.length > 0);
+  renderTable(val);
+});
+
+clearBtn.addEventListener("click", () => {
+  input.value = "";
+  clearBtn.classList.remove("visible");
+  input.focus();
+  renderTable("");
+});
+
+/* Initial render */
+renderTable("");
+document.getElementById("totalBadge").textContent = DREAMS.length + " Data";
+
+/* ============================================================
+   STAR / CONSTELLATION CANVAS
+============================================================ */
+(function() {
+  const canvas = document.getElementById("starCanvas");
+  const ctx = canvas.getContext("2d");
+
+  let W, H, stars = [], constellations = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    initStars();
+    initConstellations();
+  }
+
+  /* --- Stars --- */
+  function initStars() {
+    stars = [];
+    const count = Math.floor((W * H) / 3500);
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.5 + 0.3,
+        alpha: Math.random(),
+        da: (Math.random() * 0.005 + 0.002) * (Math.random() < 0.5 ? 1 : -1),
+        color: Math.random() < 0.15
+          ? `hsl(${200 + Math.random()*60},100%,90%)`
+          : `hsl(${40  + Math.random()*20},80%,95%)`,
+      });
+    }
+  }
+
+  /* --- Constellations (random patterns that fade in/out) --- */
+  function randConstellation() {
+    const n = 4 + Math.floor(Math.random() * 5);
+    const cx = Math.random() * W;
+    const cy = Math.random() * H;
+    const spread = 80 + Math.random() * 140;
+    const pts = Array.from({length:n}, () => ({
+      x: cx + (Math.random()-0.5)*spread,
+      y: cy + (Math.random()-0.5)*spread,
+    }));
+    return {
+      pts,
+      alpha: 0,
+      maxAlpha: 0.10 + Math.random() * 0.14,
+      phase: "in",
+      speed: 0.0008 + Math.random() * 0.0008,
+      color: Math.random() < 0.4 ? "#00b4ff" : Math.random() < 0.5 ? "#b44fff" : "#f5c842",
+    };
+  }
+
+  function initConstellations() {
+    constellations = Array.from({length:5}, randConstellation);
+  }
+
+  /* --- Draw --- */
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    /* Stars */
+    for (const s of stars) {
+      s.alpha += s.da;
+      if (s.alpha > 1) { s.alpha = 1; s.da = -Math.abs(s.da); }
+      if (s.alpha < 0) { s.alpha = 0; s.da =  Math.abs(s.da); }
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fillStyle = s.color;
+      ctx.globalAlpha = s.alpha;
+      ctx.fill();
+    }
+
+    /* Constellations */
+    for (let i = 0; i < constellations.length; i++) {
+      const c = constellations[i];
+
+      /* Fade phases */
+      if (c.phase === "in") {
+        c.alpha += c.speed;
+        if (c.alpha >= c.maxAlpha) { c.alpha = c.maxAlpha; c.phase = "hold"; c._hold = 0; }
+      } else if (c.phase === "hold") {
+        c._hold = (c._hold||0) + 1;
+        if (c._hold > 300) c.phase = "out";
+      } else {
+        c.alpha -= c.speed;
+        if (c.alpha <= 0) { constellations[i] = randConstellation(); continue; }
+      }
+
+      ctx.globalAlpha = c.alpha;
+      ctx.strokeStyle = c.color;
+      ctx.lineWidth = 0.6;
+
+      /* Draw connecting lines */
+      ctx.beginPath();
+      ctx.moveTo(c.pts[0].x, c.pts[0].y);
+      for (let p = 1; p < c.pts.length; p++) ctx.lineTo(c.pts[p].x, c.pts[p].y);
+      ctx.stroke();
+
+      /* Draw nodes */
+      ctx.fillStyle = c.color;
+      for (const pt of c.pts) {
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 1.6, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+  draw();
+})();
+</script>
+</body>
+</html>
